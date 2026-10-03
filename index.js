@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const INPUT = {
   text: 'shui yun shen chu, yan zi gui lai 🌸',                                     // kosong = gambar saja; isi untuk caption (emoji, \n, auto wrap)
-  image: 'https://img.magnific.com/free-vector/watercolor-chinese-style-background_52683-96106.jpg',                                      // URL / path gambar (opsional)
+  image: 'https://raw.githubusercontent.com/julzkeceabiez/media-assets/main/assets/input-background.jpg',                                      // URL / path gambar (opsional)
   time: '13.45',                                  // jam status bar & bubble
   bubbleTime: '',                                 // kosong = sama dengan time
   network: '4G',                                  // 4G | 5G | LTE | wifi | kosong
@@ -25,13 +25,12 @@ if (process.env.G_OUT) INPUT.output = process.env.G_OUT
 const ASSETS = {
   dir: join(__dirname, 'assets'),
   fontBases: [
-    'https://cdn.jsdelivr.net/gh/sahibjotsaggu/San-Francisco-Pro-Fonts@master/',
-    'https://raw.githubusercontent.com/sahibjotsaggu/San-Francisco-Pro-Fonts/master/',
+    'https://raw.githubusercontent.com/julzkeceabiez/media-assets/main/assets/fonts/',
   ],
   fonts: { regular: 'SF-Pro-Text-Regular.otf', semibold: 'SF-Pro-Text-Semibold.otf', bold: 'SF-Pro-Text-Bold.otf' },
-  fontFallback: 'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
-  emoji: 'https://media.githubusercontent.com/media/Ditzzx-vibecoder/entahlah/main/emoji-apple.json',
-  background: 'https://github.com/Napoleon-Fibonacci/assets/blob/main/image/mentahan.png',
+  fontFallback: 'https://raw.githubusercontent.com/julzkeceabiez/media-assets/main/assets/fonts/Inter-Regular.woff2',
+  emoji: 'https://raw.githubusercontent.com/julzkeceabiez/media-assets/main/assets/emoji-apple.json',
+  background: 'https://raw.githubusercontent.com/julzkeceabiez/media-assets/main/assets/mentahan.png',
 }
 
 const CONFIG = {
@@ -92,7 +91,7 @@ async function ensureFont() {
     }
   }
   if (Object.keys(ASSETS.fonts).every(w => FAMILY[w])) return
-  try { GlobalFonts.registerFromPath(await cached(ASSETS.fontFallback, 'fonts/Inter-Regular.ttf'), 'InterRegular') }
+  try { GlobalFonts.registerFromPath(await cached(ASSETS.fontFallback, 'fonts/Inter-Regular.woff2'), 'InterRegular') }
   catch (e) { warn('font gagal diambil, pakai font sistem: ' + e.message) }
 }
 
